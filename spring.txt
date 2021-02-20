@@ -1,0 +1,78 @@
+Question :1:- What is Spring Frame work ??
+Answer :- 
+.Spring Frame work is a free and open source java application frame work and was created by rot johnson in 2003.
+
+.It was created for enhance the productivity of the developer.
+
+**It was created by using a simple design pattern INVERSION OF CONTROL(IOP) OR DEPENDENCY INJECTION.
+
+Question :1:- What is IOP Container or Dependency injection engine ??
+
+Answer :- .This is the first module  of Core spring frame work.
+
+Let say in class A we have created the object of Class B then Class A is completly dependent on class B.If we make any changes in Class B any where then this change in class B may force you to change in Class A as well. So in big projects many classes will be like this and if we remove this dependency it can solve many problems.
+
+****SO here comes IOC container importance.
+
+
+Question :3:- What is Aspect oriented programming ??
+
+Answer :- .This is the seconed module  of Core spring frame work is another concept as we have oops.
+
+**This says is that if there is a certain thing you are using in a project which not a part of main business logic for example LOG IN, TRANSACTION MANAGEMENT etc.then why should add such things as part of your main business logic.
+
+example:-
+public class Calcultaer{
+private int addition;
+
+public boolean addittion{
+**logger.info("Entered into Calculator.addition(a,b)method");//it's not a part of main business logic.
+try{
+**addition = a+b;//THIS IS THE PART OF MAIN BUSINESS LOGIC.
+}catch(Exception e){
+**logger.info("Error occured in Calculator.addition(a,b)method");//it's not a part of main business logic.
+}
+**logger.info("Exiting from Calculator.addition(a,b)method");//it's not a part of main business logic.
+
+return addition;//THIS IS THE PART OF MAIN BUSINESS LOGIC.
+}
+}
+
+**HERE we r mixing both functional and non-functional logic which may lead a greate difficulty to manage your big java project.
+
+***So this spring modules provide a simple mechanism of how you can impelement all such no-functional or non-business things as a seprate entity just like a seprate class for seprate responsibility in your project and it's not only logs many things which you mix haviley in your business functions.
+
+.So you will be able to see logs in the log file but you do not to weite log statements within your functions
+
+Question :4:-What is DATA ACCESS/INTEGRATION FRAME WORK ??
+Answer :- This is hte third module and contains 5 modules in it.
+JDBC,ORM,OXM,JMS,TRANSACTION MANAGEMENT.
+
+(1)SPRING JDBC:-
+.While performing database operation you will not need to write a single statement for
+(1)Opening and closing database connections.
+(2)Any Exception handelling code.
+(3)Prepare and execute statements.
+(4)Resultset and much more
+
+(2)ORM(Object relation mapping):-
+. For some reasons if u don't want to use spring jdbc or plain jdbc then this Spring module provides full api support to integrate third party ORM  tools like Hibernet,jpa etc with sprig frame work.
+
+(3)SPRING OXM:-
+.This module provides full API support to integrate OXM frame works like JAXB,CASTER,JIXB etc.
+
+(4)SPRING JMS(JAVA MESSAGING SERVICE):-
+.provides full API support TO PRODUCE and consume messages from JMS queues.
+
+(5)SPRING TRANSACTION MANAGEMENT:-provides two ways of transaction management.
+(1)PROGRAMATIC WAY (2)DECLARATIVE WAY.
+
+
+Question :5:-What is Model-view-controller framework ??
+Answer:- This is the fourth Sring framework module and you can use a full web application using this in simple way.
+
+Question :6:-What is Test framework ??
+Answer:- This is the 5th and last module provides complete support for testing spring components j unit or test ngframework with a lot of ease.
+
+
+

@@ -1,0 +1,32 @@
+QUESTION :1: EXPLAIN YOUR PROJECT ??
+ 
+ Answer : 
+ .It is an online learning infrastructure(plateform) for students 8th to 12th standard.
+ 
+ .It also helps for prepration of borad exam and entrance exam as well through various collaberation tools, progress tracking and interactive content delivery tools or subsystem.
+ 
+ . Netvidayalya provides insights through detailed report of your grasp over important concept as per your syllabus.
+ 
+ QUESTION:2: What is collebration tool in your project ??
+ 
+ Answer :
+ . In Netvidyalaya User Collebration module is there where students can come online and can disscuss in a group on a particular topic using comments and reply and also they can share the resource as well and for using collebration tools user needs to register in netvidyalaya.
+ 
+ QUESTION :3: What is your progress tracking tool or what is there in progress tracking tool ??
+ 
+ Answer : 
+ .This is very useful tool for a student progress prepration on a particular topic.
+ 
+ .This tool helps students to track their progress on a particular topic on the basis of that how many times they have revised a topic.
+ 
+ QUESTION :4: How Netvidayalya help students for board and entrance exam prepration ?? 
+ 
+ Answer:
+ .Netvidayalya provides important topics,questions,previous years and  unsolved papers for borad and entrance exam as well and track the progress of a student on a particular topic.
+ 
+ QUESTION :5:What is there in Interacrtive content tool ??
+
+ Answer : This tools provides the courses and their related topics,resources and content which is related to the study of a student.
+ 
+ 
+ 

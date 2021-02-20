@@ -1,0 +1,292 @@
+question :1: How many types of web services are there ?
+Answer :1: Two types of web services are there
+(1) Soap based web services (need to leran Jax-rpc Api & jax-ws)
+(2)Restful web services (need to leran jax-rs)
+
+Question Introduction(why we need to laern web-services) ?
+ 
+ Answer :Let say we have one icici bank atm application is there and it's running on  one server and this atm application interact with data base of icici bank.
+ . Now if some customer wants to withdraw money so will go to icici atm and will insert card and then this application will fatch data from database and will check wether this customer is valid or not and having sufficient balance or not then it will provide money to the customer.
+ 
+ .Now assume here i have another bank atm application here and this app interact with the sbi db now for withdraw money same process will be there.
+ 
+ .But now the requirement is one icici bank customer wants to withdraw money from sbi atm but this icici bank customer data is not available in this sbi db so sbi atm machine will say you r invalid customer.
+ 
+ . Now icici bank wants to provide more services to the customer and says that u can withdraw money from other bank atms also.
+ 
+ **.So now sbi bank atm app will never directly interact with this icici app db becoz of some security reason and so icici db will not provide direct access here.
+ 
+ .So Now this sbi app will directly interact with this icici app and this cicic app will  interact with it's db. So sbi app will send deatials of icici bank customer card details to the icici bank app and icici bank data after fatching data will send back details to sbi app wether it is valid or not and sufficient balance or not.
+ 
+ .So if this customer is valid then this sbi atm app will provide money to the icici bank customer and will send update balance to the icici app.
+ 
+ .SO TO SHARE THE DEATAILS THESE WEB APPS USE WEB SERVICES.
+ 
+ QUESTION :2: WEB-SERVICES Architecture ??
+* Web service is a Specification means it does not provide any API instead it they provide SPECIFICATION.
+
+*SPECIFICATION :- Some set of rules and guielines for how we wiil communicate(share data) b/w two apps.
+
+* Web service has suggested some components to share information b/w two apps
+(1): WSDL(web service digital lanuguage)
+(2): UDDI(UNiversal Description Disscovery and Integration which is OPTIONAL NOT MANDATORY):- it's an entity on internet
+(3): SKELETON
+(4):STUB
+(5): SOAP PROTOCOL
+(6):HTTP PROTOCOL
+
+**Now let say a java web  application id there  with a calss CalService having a method(p int add(int,intj){return i+j;}) and there is client side application on c++ based app wants to call this method.
+
+.So now we can't create the object of this class in c++ app to call this java app method.
+.And to call this method c++ app should know the name of class,method(need to invoke) name,parameters and return type.
+.NOW JAVA App needs to share the deatails of this method in the form of one formate and that formate should understable by the client app so java app(service app) will share information(class and method) in xml(universal language) form so here this xml in web service is WSDL in addition it will provide END POINT URL(url the location where your service app is running) also.
+
+.Now we have another system in web services architecture that contains the UDDI REGISTERY SOFTWARE(not mandatory directly also service provider can send this wsdl file to the client through email attachment we can share this file to more  than one client apps instead of storing into this uddi software) and in this system the service provider will store this wsdl file with some unique name and that unique name with the also the location of this uddi service provider will share to client app.
+
+.So if u want to store your wsdl file into this uddi registery u should have one system and in system u need to install this uddi registory software.So it if u have many clients to share this wsdl file let say 1000 clients so it is impossible to share this service through an email attachment to share your wsdl file to 1000 of client. So that time u need to store your wsdl file into the uddi so cleint can will get wsdl file from the uddi.
+
+.Now the client app will interact with this uddi registry with sending that unique name and client app will get this wsdl file(xml file).
+.So now using this wsdl(xml file) client app will generate some classes called STUB or PROXICIES  using some stub generation tool. So this stub(class) will dpened on your language(client app programming language) it may be c++ class(stub) or c#class(stub) etc.
+.The method which is to be invoked from server the same method(only syntax) will be available to this STUB(CLASS) but not with same  implementation.
+.Now client app will this stub(class) object in client app and will invoke the mehtod(paasing arguments) and get values(return type value).
+.It means this client is going into this stub.so now this stub is having name of the called method(with pass parameters values).So this stub will store this data in the form of XML document in web service techonology we can call this XML document SOAP REQUEST.So in this soap request we have mehtod(with parameterv values with types) name.
+
+.Why this stub is preparing this SOAP REQ becoz this xml doc needs to send to this service(server side class) it may be developed by any programming language.So your requested method details should be understandable by service app.
+
+.Why do we call it soap request becoz STUB uses some set of pre defined tags to prepare this xml document(soap req) these predefined tags are called SOAP TAGS.
+
+.SOAP is a protocol which contains set of predefined tags so stub uses the some tags of soap to prepare the soap request.
+
+.So now HTTP PROTOCOL will send(move) this SOAP REQUEST from client location to the server locaiton.
+
+.So now the server will recieve this SOAP REQUEST and now this request will be handed over to the one COMPONENT(SKELETON) which is exist to the service side.
+
+SKELETON is a predefined class and it depends on programming language (means which language class is the service class here here service is a java class so SKELETON also a java class).So Skeleton will read this xml file(soap request) to get name of the mehtod(with para values and their types).So SKELETON  creates the object of service class and calls the invoked method. invoke the method of the service class by passing the arguments.
+.So SKELETON will get the mehtod return value and now Skeleton will prepare one xml doc and this xml doc is called SOAP RESPONSE and in this soap resopnse it will store this mehtod return value this soap response(xml doc) is understandable by any programming language and is also prepared by using  soap tags that is why it is called soap response and this SOAP RESPONSE  will be send(moved) again by HTTP PROTCOL.
+HTTP PROTOCOL is a transportation protocol it moves something form one to another location and this SOAP RESPONSE will be received by  the STUB and handover to the Client app.
+
+* Service provider will prepare the wsdl(xml) file.so to prepare this file we need wsdl generation tool in service class.So after generating the service class the service provider will use this wsdl tool to prepare this wsdl(xml) file.
+
+*HERE SKELETON,WSDL GENERATION TOOL,STUB GENERATION TOOL are predefined classes.
+
+*If i want to develop a web-service(server side) so u need two components(SKELETON & WSDL GENERATION TOOL) SO who will provide these  so if u r developing this server side app using java.So SUN sun should provide thse components if by using C# so microsoft should proivide.So if form client app if u  want to invoke the web-service mehod so it needs STUB GENERATION TOOL SO the based on client app language their provider should provide this tool like server side.
+
+.THSES Componnets are called web-service APIS. So sun provides Four java web-service APIS
+(1) JAX-RPC(JAVA API FOR REMOTE PROCESSER CALL) given by sun microsystem along with jdk 1.4.
+(2) JAX-M(JAVA API FOR XML MESAAGING)given by sun microsystem along with 1.4.
+(3)JAX-WS(JAVA API FOR WEB-SERVICES) given by sun microsystem along with i.5.
+(4)JAX-RS(java api for xml restfull services)given by sun microsystem along with 1.6.
+.So thses APIS should contains the wsdl generation tool,skeleton and stub generation tool.SO using these APIS we can develop both client app web-service client and server side web-service.
+
+*THe SKELETON we need to configure into web.xml file.
+**QUESTION ::WHAT is the meaning of stand alone application ?
+Answer : Java class with main method().
+
+Question :: How many types web services are there ??
+Answer :: (1)Asynchrnous type web services can develop using JAX-M(JAVA API FOR XML MESAAGING).
+(2)     Synchronous type web services using JAX-RPC,jAX-WS,JAX-RS.
+
+* Again this SYNCHRONOUS  web-services is divide into two types.
+(1) SOAP based web services use JAX-RPC and jAX-WS.
+(2) Rest full web services using JAX-RS.
+
+**All these APIS are the specification(api which contains only interfaces and abstract classes and they are not providing any implementation classes here means to develop web service in a app u can't directly use these APIS) only so we require some implementation we will use that implementation in our web service and thse implementation are given by the sun microsystem.
+
+* Implementations for these Api's:-
+ *
+JAX-RPC:-
+(1)JAX-RPC-SI(sun implementation(API)):-Implementation  menas some set implementation classes and only the imlementation given by sun microsystem that set of classes we can call them API bUT  these API are not given by Sun microsystem along with jdk.So we need to download seprate the these  Apis and can use to develop web services as well client web services.
+
+(2) Axis1 is given by Apache foundation(apache is  third party vendor so apache only will provide this api seprate jar filesfor this api means we need to download axis1 software).
+
+(3)Web-logic implementaiton is given by BEA previously now it Is ORACLE(This Api has come with web logic server so don't need to download).
+
+(4)Websphere implementation and is given by the IBM.
+
+(5)JBOSS implementation and is given by REDHAT.
+
+*For using JAX-RPC we can use any of the above implementaion and the vendor of these implementaion provide the WSDL GENERATION TOOL(class) and SKELETON(class) for web service and STUB GENERATION TOOL(class) for  client side web service.
+
+JAX-WS:-
+(1) JAX-WS-RI(referecne implementation means it's not fully implementation) given by the SUN needs to separate download it but from 1.6 version they have included this API jar file.
+
+(2)Metro (Fully implementation) and is given by SUN needs to crate sperately.
+
+(3)Axis2 and is given by apache foiundation and does not support the spring integration.
+
+(4)Apache CXF and is given by Apache foundation and it supports spring integration.If your web service needs to inject some other object using SPRING IOC we can do it.
+
+(5)Web logic implementation and is given by BEA.
+
+(6) WebSpere Implementation and is given by IBM.
+
+(7)JBOSS IMPLEMENTAION and is given by REDHAT.
+
+(8)GLASS FISH IMPLEMENTATION and is given by sun microsystem(internally uses METRO).
+
+*For using JAX-WS we can use any of the above implementaion and the vendor of these implementaion provide the WSDL GENERATION TOOL(class) and SKELETON(class) for web service and STUB GENERATION TOOL(class) for  client side web service.
+
+
+JAX-RS:-
+
+(1)JERSEY IMPLMENTATION and is given by Sun and needs to download explicitly.
+(2)REST EASY and is given by Redhat.
+(3)REST LET and is given by Jerome lovel.
+(4)APACHE CXF and is given by Apache foundation.
+(5)APACHE WINK and is given by Apache foundation and does not support the Spring integration.
+
+
+
+**
+Whenever clients makes a request it will send the mehtod deatils using soap request but along with this soap request it also sends the url(http://localhost:8080/web app name/skeleton name configured in web.xml file/your web sevice class special name) in addition(means not a soap request part)
+
+.This url reciecved by the server(on which web-service is running) and server will create the skeleton object configured in web.xml and this skeleton object will idntifies the your web service based on url web service special name.
+
+.This url is available in wsdl file and from here client gets this url also called END POINT URL OF THE WEB SERVICE.
+
+.So to provide(map) the special name for your web-service class we need to create a xml file (server_config.wsdd) inside this we'll map the service class with it's unique(special) name.
+
+.So whenever clients sneds a request this request will come to Skeleton and skeleton reads the service class unique name from request and then will read the config file(server_config.wsdd) and will verify wether is there any class is maped with this unique name and if it is maped then it will create object of the class and will invoke the requested mehtod by passing the parameters and will provide the response to client.
+
+** The config file(server_config.wsdd) name,wsdl class name and Skeleton class name will be different with every implementaion.
+
+*WEB-SERVICE EXAMPLE USING AXIS1 IMPLEMENTATION:-
+
+. First we need to download Axis1 implementation JAR FILES and needs to set into class path and then needs to copy these jars into our application WEB-INF lib folder. So the server will take the Skeleton and the wsdl class from your web-app lib folder's jar file.
+
+First Create the Web APPLICATION inside this need to crate the Web service class(java class) and compile it and then needs to generate the wsdl file then needs to create the web.xml file and then server-config.wsdd file.
+
+.Here Axis1 implementation has given one class for WSDL generation tool that is org.apache.axis.wsdl.Java2WSDL class and this class will act as wsdl generation tool here and will generate the wsdl tool here.
+
+.So now to generate the WSDL file using this WSDL GENERATION TOOL we need to provide the some inputs(end point url,name for the wsdl file need to be generate, target name space) to this wsdl generation tool so based on these inputs this tool will generate the wsdl file.
+
+.And for the Skeleton it has Axis1 has given org.apache.axis.transport.http.AxisServlet and we need to config this Skeleton(AxisServlet) class into the web.xml file with some url pattern(notation) 
+ 
+ .** These are the steps without Eclipse to create Axis1 web services.
+ 
+ ***BUT if we r createing this AXIS1 web servies using ECLIPSE then not required to follow these steps here means not reuired to generate wsdl file,not require to create the server_config.wsdd file,not require to create the skeleton and config too in web.xml,even not require to downlaod the AXIS1 jar files not require to copy them into web-inf lib folder. JUST we need to create one Dynamic web project, needs to create the service class(pojo) and needs to follow some steps to service class to Web service then automatically eclipse will do all the steps required above.
+ 
+ **Eclipse supports only three web-service implementation and they are AXIS1,AXIS2,APACHE CXF(JAX-WS).
+ 
+ ** Convert java class into webservice:-
+ 
+ .Right click on java class and go to others and go to web services folder an open it and click on the web services.
+ .now in service we have two base to develop web servicew in first  drop down(web-service type) we have two options first one is BOTTOM UP JAVA BEAN SERVICE(bottom up approach) and in this we'll develop service class then will convert that service class as a web service.
+ .And the seconed option is  TOP DOWN APPROACH in this first we'll develop the WSDL FILE and required accecries and from that we'll develop the required user defined types and service implementation class.
+ Now we'll go to that service generated implementation class just we'll provide our required implementation based on our business requirement and will deploy that service into the server.
+ 
+ .Here only below the this drop down server option will be there so  if you to deploy your service calss into another service you can configure and can change the server.
+ 
+ .NoW Below the server configure very important that is WEB-SERVICE RUN TIME link and it means here which implementation(axis1 or Axis2 etc.) u r using here.By default it has selected Axis(AXIS1).
+ 
+ .If You click this   WEB-SERVICE RUN TIME link then you will find the list of IMPLEMENTATION which are supported by ECLIPSE  and u can choose any one of them.
+ 
+ .So NOw when we click the finish button it will do all the steps which we require to make a web-service and finally it will deploy into the server also. Now you can check in your web-content folder all files wether it has done all steps or not.
+ 
+ .So inside web-content it will create a WSDL folder if you open it we have the wsdl file and this wsdl file contains your service class details and    END POINT URL  of the web-service.
+ 
+ .It will configure the SKELETON class in the web.xml file and the IN HERE AXIS1 IMPLEMENTATION AXIS SERVLET will act as a SKELETON.
+ 
+ .Now it generated a server-config.wsdd file also in this file there is tag calles service and this tag has one name parameter this is the UNIQUE name of your SERVICE CLASS which is identified by the SKELETON SO you can change this name and the same name u need to change in the WSDL file or vise versa.
+ 
+ ** Now if you want to check wehter our service has deployed into server or not then go to server view pannel(that the link in console window where it shows server has started) and click on it then can the name of your service there.
+  
+  *Now after deploy this i want to check wether it has deployed successfully or not go to the generated wsdl file there u need to select the end point urlk of the service from adderess tag open the browser give tha end point url and add something with ?wsdl so this is called as a WSDL URL(IF U ADD SOMETHING IN END POINT URL WITH ?WSDL CALLED AS WSDL URL).   SO if we give this WSDL URL in our browser and if service provider provides this wsdl file then u can say that your web-service has been successfully deployed. 
+  
+  ** QUESTION : HOW to crate AXIS 1 client using ECLIPSE ??
+  Answer : ***There are two types of CLINTE SERVICE we have in WEB-SERVICES  
+  (1) PROXY BASED CLIENT:-
+  . If web service client is generating STUB at the client side and if client uses that STUB in his application to invoke the web services that is called as a PROXY BASED CLIENT.
+  
+  (2)DII(DYNAMIC INVOCATION INTERFACE) CLIENT:-
+  .In DII CLient will never generates the STUBS and so that client will never uses stub to invoke the web-service.
+  .So in DII WEB-SERVICE PROVIDERS like AXIS1,AXIS2,METRO,JAX-WS,CXF IMPLEMENTATION will provide the some set of classes which act sa s STUB those classes we'll use in our client application to invoke the  web services.
+  
+  **Now Either it is a DII CLIENT OR PROXY BASED CLIENT then client requires the WSDL FILE or WSDL URL  from the service provider to create the web service client.
+  
+  .Now by using for PROXY BASED if Service provider has shared WSDL FILE to the client so using this WSDL FILE Client will generate  STUBS OR PROXIS to invoke the Web service and after  generating this Stub client will generate the CLIENT APPLICATION it may be WEB-CLIENT or it is a STAND ALONE PROGRAMME and i this programme or app client will use these stubs or proxis to invoke the web-services.
+  
+  .Now if you want to develop this client using Eclipse so that we'll never generats manually STUBS and if u r not using ECLIPSE  then developer needs to develop the STUBS Manually using STUB generating tools which are provided by the web-service implementation providers so that here AXIS1 imlementation provider should provide this stub generating tool here.
+  
+  .But here we r using Eclipse so eclipse will internally use the STUB GENERATING TOOL  to generate the STUB here nad WSDL FILE or WSDL URL is menndatory as Input to generate the STUB.
+  
+  .CLIENT may be anythnig it may be WEB-CLIENT OR STAND ALONE CLIENT.
+  
+  .** For creating STAND ALONE First need to create java Project then need to copy WSDL FILE OR WSDL URL(if service provider shares) into this project's ROOT FOLDER then Create STUB.
+  .Now needs to create MAIN METHOD APP(STAND ALONE) or WEB-APP SO it's a JAVA PROJECT so needs to create MAIN METHOD PROGRAMME AND FROM that MAIN method we will use this stub to invoke the web-service.
+  
+  ******IN lAPI IN ECIPSE CREATED ON JAVA PROJECT CALLED CALSERVICECLIENT and in this project i needesd wsdl file so First i copied the WSDL file form CALCULATORSERIVCE PROJECT and directly PASTED into this PROJECT.
+  .SO now  needs to generate the STUBS(PROXIES) and the STUBS are JAVA FILES so needs to put in SRC FOLDER. So to create stub go to SRC FOLDER and right click and go to new and then go to FOLDER WEB-SERVICE now open this folder and select WEB-SERVICE CLIENT and click on NEXT button.
+  
+  .So now a page will be open there here First  Text box(service defition) for browsing wsdl file or can directly give the url of wsdl file.
+  
+  .Seconed option there is a drop down(Client type) so select JAVA PROXY.
+  
+  .Now below three other links for slecting Server,IMPLEMENTATION and SERVICE clASS SO SELECT and click on FINISH button.
+  
+  .Now if you see your client app it sets all AXIS1 IMPLMENTATION JAR FILE with wsdl file and in SRC FOLDER will generate the package same name in Web-Service inside package will generate the Stubs and this class(CalServiceSaopBindingStub.java) is mainly acting as Stub and the remaining classes are acting as supporting class for this STUB(contains same implemented interface nad methods as service class).
+  .Now we know that these STUBS are generated from WSDL FILE  and so go to WSDL FILE and in this wsdl file ROOT TAG WSDL:DEFITION  is there having a attribute targetNamespace="http://services.durgasoft.com" so AXIS1 STUB GENEARTION TOOL will use this attribute value in reverse to generate the STUB'S PACKAGE(same as web services) at the client side .
+  
+  .There is another tag in this wsdl file called BINDING with  atrribute NAME and using this attribute value followed by STUB tool will generate the STUB.
+  
+  .Now in your TestClient class you need to create CalServiceSaopBindingStub object so how to create this Object here.So for creatinn Object we have one CONSTRUCTOR CalServiceSaopBindingStub(URL,Service) here so in argument first parameter(URL) will take java.net.url object(need to create this object by passing end point url of web-service)  and the seconed parameter(Service) will take Service(It's a class given by the AXIS1 implementation class) Object so this Service class Object also we need to create before creating the CalServiceSaopBindingStub object So on the top of the CalServiceSaopBindingStub object we have service methods so we'll invoke these service methods on this STUB object and will get the results here.
+  .So Internally that Stub object ADD method prepares the SOAP REQUEST that SOPA REQUEST will send to the Service and Service will provide the SOAP RESPONSE with return value and that return value will read by the STUB and that value will be hand over to the client application here.
+  
+  .So create new class TestClient.java and do these things in it.
+ 
+ ***Question: Web-services by Axis2 implementation ??
+ 
+ Answer : **Eclipse contains Axis1 JAR FILES but it does not contain AXIS2 and APACHE CXF JAR FILES. So before working on Axis2 and Apache CXF First we need to download jar files after that  extract that zip file and then need to handover that extract root folder to the eclipse so  that eclipse will pick the jars form that location.
+ 
+ .Latest version of AXIS2 is 1.7.5 and download ony the BINARY DISTRIBUTION ZIP.
+ 
+ STPES TO ADD JARS TO THE ECLIPSE : - .In eclipse go to windows option then go to prefrences then go to WEB-SERVICES FOLDER and open it then and here we need to select AXIS2 PREFRENCES and then need to browse AXIS2 EXTRACTED ROOT DIRECTRY then click on ok button now u r eligible to create  web-service or web-service client using AXIS2 in  eclipse.
+ 
+ ***** NOTE : AND BEFORE CREATING AXIS1,AXIS2 and APACHE CXF WEB SERVICE FIRST WE NEED TO ADD THE SERVER THEN ONLY U CAN CREATE OTHERWISE U CAN'T CREATE HERE.
+ 
+ .Now go to new option and go to others and go to web folder and select dynamic web project and give name AXIS2CALSERVICE and select dynamic web version module as 2.5.
+ .now go to src folder and create one java class CalService.java and package com.durgasoft.service and inside this class create one method(int add(int i,int j)). and see in eclipse  this project.
+ 
+ .** AS we know AXIS2 IMPLEMENTATION belongs to JAX-WS specification and this specification has given some NOTATIONS(@webservice,@para,etc.) so IF U R NOW WORKING mandatory u need to use these Anotaiotns in service class(CalService) ohterwise u can't create web-services here but DON'T NEED TO ADD THESE ANOTATIONS BECOZ WE R USING ECLIPSE BECOZ ECLIPSE WILL ADD THESE DYNAMICALLY.
+
+.Now convert CalService into Web-service using AXIS2 IMPLEMENTATION same like Axis1 but here need to select AXIS2 implementation inside WEB-SERVICES FOLDER.
+.So it will create wsdl file and will add Axis2 Jar into web-inf lib folder,SKELETON,WEB.XML etc like AXIS1.
+
+***QUESTION : CLIENT WEB-SERVICE USING AXIS2 IMPLEMENTATION ??
+
+ANSWER : STEPS :
+
+.Create Dynamic web project with project name Axis2CalserviceClient.
+
+.Generate Stubs in src folder using wsdl url.SO before generating using url need to remeber one thing the SERVICE should be on the running mode BECOZ you r using wsdl url BUT if you r using PHYSICAL WSDL FILE here then no need to running the SERVICE on the server here.
+.So create Stub like previous client of AXIS1 with selecting AXIS2 implementation.
+
+.Create TestClient.java and in this class need to crate generated STUB object.
+
+.So go to new and go to WEB folder and then open it and choose dynamic web-project and do operation like Axis1 implementation Client service.
+
+.So after creating STUB in CalserviceClient if you open the STUB then you will get three inner classes Add(on method name of web-service),AddResponse,Extension mapper.Here you have only one method(add) in web-service so only only one inner class for mehtod and inner classe depends on no. of methods present in web-service.
+
+.So after creating this need to Create a ClientTest.java in that need to createv Stub object and also need to create the innerclass(Add) object to invoke the add() method of web-service.
+
+so how to create inner class object:
+
+CalServiceStrub.Add params = new CalServiceStrub.Add();
+
+.**This params having two methods becoz we have two parameters in our add(int i, intj) method.
+
+params.setI(i);
+params.setJ(j);
+
+.so parmeters have done here and so now need to invoke. So by using Stub refrence call this add method by passing this params refrence add(params).
+
+CalServiceStub stub = new CalServiceStub(); 
+
+ ****sutb.add(params); it returns CalserviceStub.AddResponse type so need to declare this innerclass(AddResponse) refrence.
+ 
+ CalserviceStub.AddResponse  response = sutb.add(params);
+ 
+ .So in this response we have return value so get it and can use or print.
+ 
+ int result = response.get_return();
+ 

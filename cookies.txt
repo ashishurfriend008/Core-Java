@@ -1,0 +1,62 @@
+Question:1:- What are  cookies ??
+Answer : - Cookies are small text files that a browser stores in the visitor's computer.A Cookie is basically a String of name-value pairs seprated by semi colons.
+
+Question:2:-How does a cookie look ??
+Answer : - "color=red;expires=friday, 5 aug 2016 01:00:00 UTC;"
+UTC:- it is the time format.
+
+**In this Cookie String we have 2 value pairs  :-
+The variable(attribute) expires specifies when the cookie is going to expire.
+**By Default cookies are deleted when the current browser session ends or you close the browser.
+
+****So if you want to store the persistence cookie on the client computer even after the browser session has ended then specify either expires or max-age attributes.
+
+Question:3:- How to write a cookie ??
+document.cookie = "color=red;expires=friday, 5 aug 2016 01:00:00 UTC;";
+
+
+
+Question:4:- How to read a cookie ??
+var cookieString = document.cookie;
+**if a cookie gets expire and after that u read then it will return a empty String.
+
+
+Example"-
+<html>
+<head></head>
+<body>
+<select id="ddlTheme" onchane="setcolorCookie()">
+<option value="red">rRed</option>
+<option value="blue">Blue</option>
+<option value="green">Green</option>
+<select/>
+</body>
+<script type="text/javascript">
+ window.onload = function(){
+ 
+ if(document.cookie.length!=0){
+     var nameValueArray = document.cookie.split("=");
+     document.bgcolor =  nameValueArray[1];
+     document.getElemetById("ddlTheme").value = nameValueArray[1];
+ }
+ }
+ function setcolorCookie(){
+ 
+  var selectedColor =  document.getElemetById("ddlTheme").value ;
+  document.bgcolor = selectedColor;
+  document.cookie = "color="+selectedColor+";expires=friday, 5 aug 2016 01:00:00 UTC;";
+
+ }
+</script>
+
+</html>
+Question:5:-Why are cookies needed ??
+Answer : -
+.Web Applications work on HTTP protocol and http is a stateless protocol.It means after the webserver has processed the client request for a web page, the web server will not remember anything about the client that made the request.
+
+.For example if we set backgorud colour using J.S. for our page in one browser and it is open then at the same time if we reload that page in new browswer then our background color will go means browser is not remembring the color we selected previously.
+
+.**This is becoz the Web Applications work on HTTP protocol and http is a stateless protocol. This means after the web server has processed the initital client request, it does not rememer anything about the setting the client made.
+
+*** There are several ways to make a web application remember these setting. one of the easiest and common way is using cookies.
+

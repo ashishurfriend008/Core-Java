@@ -1,0 +1,35 @@
+Question:1: What is a Class ??
+
+Answer : Class defines the behaviour of an Object.
+
+Question:2: What is an Object ??
+
+Answer : Object is an Instance of a class which contains state and behaviour.
+ 
+ Question:3: What is inheritance ??
+ 
+ Answer: Create a new class using existing class is a concept of Inheritance.
+ 
+ Question:4: What is an Constructor ??
+ 
+ Answer : It's an special method which invokes automatically when an instance of an class is created.
+ 
+          two types of constructor are there (1)Default constructor (2)Parameterized constructor.
+          
+          
+Question:5: When should use LinkedList ??
+Answer : Array is a Continous structure means it is not breakable in indexing between the memory where Linked List is a Noncontinuos means the memory location may be breakable.
+
+.So when you want to Store small amount of data then use Arrays.
+
+.But When you want to Store Large amount of data then should use Linked List becoz System will provide Different Memory locations for Storing memory and it contains previous one and next one location address.
+
+Question:5:Why do we take int as a promary key in database table ??
+
+Answer :Becoze int is faster than string to compare.
+
+Question :6: What is recurssion ??
+
+Question ;7: what is java ??
+
+Answer :Java is a programming language  developed by Sun Microsystems in 1995, it is object oriented programming language,it's platform independent launguage which is used to create applications on  computer. 

@@ -1,0 +1,27 @@
+Question :1:-What is JDBC ??
+
+.Java Database Connectivity (JDBC) is an application programming interface (API) for the programming language Java, which defines how a client may access a database.
+.**It is Java based data access technology and used for Java database connectivity. 
+.JDBC communicate with database and provides connection b/w java app and databse.
+
+Question :2:-What is the need of JDBC ??
+
+.Database understands SQL queries so to convert a java statement into SQL UNDERSTANDABLE statement u require JDBC as a MEDIATOR.
+
+Question :3:- JDBC architecture ??
+
+.In JDBC Architecture we have two layers (1)Application Layer (2)Database Layer.
+
+.JdDBC API will be in app layer and jdbc sends data to the Driver class but the Driver class need to maintain in database side.
+
+.**So these drivers are mediator to talk with database and sends back response to the jdbc and jdbc will conver data into java understandable form.
+**so every database provides it's own driver like mysql driver, oracle driver etc. and actually these converts your java statemnt into sql query.
+
+Question :4:-Types of Drivers in JDBC ??
+
+ .4 types of drivers are 
+ 
+ (1)JDBC-ODBC(open database connectivity)-BRIDGE-DRIVER:-
+ 
+ Java statements passes to the jdbc and and jdbc will pass to the ODBC and odbc will convert it into open database connectivity calls.
+ 

@@ -1,0 +1,43 @@
+Question:1: How to convert a java data into JSON ??
+
+XML DATA :- 
+<topic>
+   <name>java</name>
+   <tutorial>
+         <name>java tutorial one</name>
+   </tutorial>
+   <tutorial>
+         <name>java tutorial two</name>
+   </tutorial><tutorial>
+         <name>java tutorial three</name>
+   </tutorial>
+</topic>
+
+
+***CONVERT THIS XML DATA TO JSON DATA USING JAVA THAT SHOULD LOOK LIKE THS AFTER CONVERT
+
+{
+   "topic":{
+        "name":"java",
+        "tutorial":[
+             {"name":"java tutorial one"},
+             {"name":"java tutorial two"},
+             {"name":"java tutorial three"},
+             
+        ]
+   }
+}
+
+iN SERVLET CONVERT TO JSON :-
+StringBuffer convertData = null;
+convertData = new StringBuffer("{\"topic\": {");
+convertData.append("{\"name\":\"java\","});
+convertData.append("\"tutorial":[");
+convertData.append("{\"name\":\"java\","});
+convertData.append("\"tutorial":[");
+convertData.append("{\"name\":\"java\","});
+convertData.append("\"tutorial":[");
+convertData.append("{\"name\":\"java tutorial one\"},");
+convertData.append("{\"name\":\"java tutorial two\"},");
+convertData.append("{\"name\":\"java tutorial three\"}]");
+convertData.append("}}");

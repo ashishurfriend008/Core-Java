@@ -1,0 +1,9 @@
+Question :1: How to reverse a integer number with out converting it into string ??
+
+Question :2:what is recurssion and using it make febunaci series ??
+
+Question :3:Take a String and find the first non repeatative character ??
+
+Question :4: How ArrayList internally works ??
+
+Question difference between Encapsulation and data hiding ??

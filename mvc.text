@@ -1,0 +1,72 @@
+QUESTION:1:- By using which source two java applications can communicate ??
+
+One java application server can communicate with another java app server using EJB.
+
+EJB:-
+.Enterprise JavaBeans (EJB) is one of several Java APIs for modular construction of enterprise software. EJB is a server-side software component that encapsulates business logic of an application.
+
+General responsibilities of EJB:-
+.Transaction processing
+.Integration with the persistence services offered by the Java Persistence API (JPA)
+
+QUESTION :2:- What happens when u submit your data from browser ??
+
+. Whhen you submit your data from browser then browser will convert  that data  into HTTP PROTOCOL and will send to the server.
+
+QUESTION :3:-What is MVC ??
+
+.MVC stands for MODEL-VIEW-CONTROLLER  and is divide into three parts.
+(1) Presentation layer(view):-
+.Responsibility of presentation layer is to show web pages on browswer.
+.BY using Html/jsp and css we can design this presentation part.
+.And for any client(browser) side validation can use javascript.
+.
+(2)Controller layer:-
+.Controller acts on both model and view. It controls the data flow into model object and updates the view whenever data changes.    It keeps view and model separate.
+.WHen you submit your data from this presentation layer data will go to controller in the http form and in controller servlet/jsp/filter/tag libraries are there can use any of one and after read will process data and to process data it will send data to  MODEL LAYER.
+
+.*** JSP, FILTER, TAG LIBRARIES ARE THE SERVLET COMPONNENT ONLY.
+
+.****OR to read data in controller can use some FRAME WORKS also like:- STRUTS , JSF , SPRING MVC.
+
+
+(3)Model layer(DAO and model calsses oprations):-
+MOdel layer can divided into two parts.
+(1) Business layer:-
+.In model layer data first reaches to Business layer and do here Business oprations then sends to DAO means using  model(pojo) classes get and set methods it gets and sets value then send that object or values to DAO.
+.To write Business operation need simple java code along with your java transaction API and for security Java Security API not it's not simple. .**so for these SPRING given support thta is SPRING TRANSACTION and SPRING SECURITY.
+.EJB also provide support for these transactions.
+
+(2) Data access layer(DAO):-
+.DAO class will sends data to  your database.
+.DAo needs to talk with database can use JDBC or some frame wrok like Hibernet,JPA(both internally use jdbc).
+
+QUESTION:4:-Need of Transaction support ??
+. If you are adding amount to two accounts then it requires double operation of same process then if any of the transaction failed then operation will become inconsisance so to  it's consistancy we need Transaction support so in if both got sucess then it will return success otherwise will return failed.
+
+.So using EJB it's not simple and lengthy code too so we can use spring transaction also.
+
+
+Question:5:- ******What is security provided by BUsiness layer or What is LOGGER  ??
+
+.Some times your transaction gets fail and money gets deduct from your account.
+So to know this wether this transaction has done by user or not.So whenevr you do some operation  then business class tracks all information into LOGGERS so if data crash then through these LOGGERS bank people will read the logg files ans will check about particular transaction.
+
+Question:6:-What is LOGGING or What is LOGGER ??
+.
+Logging is the process of writing log messages during the execution of a program to a central place. This logging allows you to report and persist error and warning messages as well as info messages (e.g., runtime statistics) so that the messages can later be retrieved and analyzed.
+
+.The object which performs the logging in applications is typically just called Logger.
+ 
+ 
+. Logging in Java
+
+Java contains the Java Logging API. This logging API allows you to configure which message types are written. 
+**Individual classes can use this logger to write messages to the configured log files.
+
+**The java.util.logging package provides the logging capabilities via the Logger class.
+
+
+QUESTION:3:- How to configure or add jar fliles of your database into your project ??
+
+.Go to project Build Path and go to configure build path and go to ADD EXTERNAL JAR FILES browser it  and then choose your files in the system.
